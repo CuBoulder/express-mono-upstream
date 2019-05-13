@@ -1486,7 +1486,7 @@ function redirect_status_code_options($code = NULL) {
 /**
  * Returns if the current page request is a page not found (404 status error).
  *
- * Why the fuck do we have to do this? Why is there not an easier way???
+ * Why the butterfly do we have to do this? Why is there not an easier way???
  *
  * @return
  *   TRUE if the current page is a 404, or FALSE otherwise.
