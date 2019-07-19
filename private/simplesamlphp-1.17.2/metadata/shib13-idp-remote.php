@@ -9,6 +9,6 @@
 
 $metadata['https://fedauth.colorado.edu/idp/shibboleth'] = [
     'SingleSignOnService'  => 'https://fedauth.colorado.edu/idp/profile/SAML2/Redirect/SSO',
-    'certificate' => 'example.pem',
+    // 'certificate' => 'example.pem',
 ];
 

@@ -20,7 +20,7 @@ $config = [
 
         // The entity ID of this SP.
         // Can be NULL/unset, in which case an entity ID is generated based on the metadata URL.
-        'entityID' => null,
+        'entityID' => 'https://fedauth.colorado.edu/idp/shibboleth',
 
         // The entity ID of the IdP this SP should contact.
         // Can be NULL/unset, in which case the user will be shown a list of available IdPs.
@@ -37,15 +37,17 @@ $config = [
          * The metadata will then be created as follows:
          * <md:RequestedAttribute FriendlyName="friendlyName" Name="name" />
          */
-        /*
+        
         'name' => [
-            'en' => 'A service',
-            'no' => 'En tjeneste',
+            'en' => 'Jesus SSO Test Website',
         ],
 
         'attributes' => [
-            'attrname' => 'urn:oid:x.x.x.x',
+            'displayName' => 'urn:oid:0.9.2342.19200300.100.1.1',
+            'cuEduPersonUUID' => 'urn:oid:0.9.2342.19200300.100.1.1',
+            'mail' => 'urn:oid:0.9.2342.19200300.100.1.3'
         ],
+        /*
         'attributes.required' => [
             'urn:oid:x.x.x.x',
         ],
