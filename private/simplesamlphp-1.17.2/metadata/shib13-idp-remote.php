@@ -7,9 +7,8 @@
  * See: https://simplesamlphp.org/docs/stable/simplesamlphp-reference-idp-remote
  */
 
-/*
-$metadata['theproviderid-of-the-idp'] = [
-    'SingleSignOnService' => 'https://idp.example.org/shibboleth-idp/SSO',
+$metadata['https://fedauth.colorado.edu/idp/shibboleth'] = [
+    'SingleSignOnService'  => 'https://fedauth.colorado.edu/idp/profile/SAML2/Redirect/SSO',
     'certificate' => 'example.pem',
 ];
-*/
+
