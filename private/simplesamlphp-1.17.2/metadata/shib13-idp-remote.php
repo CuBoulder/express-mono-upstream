@@ -6,9 +6,3 @@
  *
  * See: https://simplesamlphp.org/docs/stable/simplesamlphp-reference-idp-remote
  */
-
-$metadata['https://fedauth.colorado.edu/idp/shibboleth'] = [
-    'SingleSignOnService'  => 'https://fedauth.colorado.edu/idp/profile/SAML2/Redirect/SSO',
-    'certificate' => '../cert/saml.pem',
-];
-
