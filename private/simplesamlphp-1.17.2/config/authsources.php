@@ -20,7 +20,8 @@ $config = [
 
         // The entity ID of this SP.
         // Can be NULL/unset, in which case an entity ID is generated based on the metadata URL.
-        'entityID' => '',
+        // This is where we could put the url of the site we're adding SSO to
+        // 'entityID' => '',
 
         // The entity ID of the IdP this SP should contact.
         // Can be NULL/unset, in which case the user will be shown a list of available IdPs.
@@ -39,13 +40,14 @@ $config = [
          */
         
         'name' => [
-            'en' => 'Jesus SSO Test Website',
+            'en' => 'Web Express',
         ],
 
         'attributes' => [
             'displayName' => 'urn:oid:0.9.2342.19200300.100.1.1',
             'cuEduPersonUUID' => 'urn:oid:0.9.2342.19200300.100.1.1',
-            'mail' => 'urn:oid:0.9.2342.19200300.100.1.3'
+            'mail' => 'urn:oid:0.9.2342.19200300.100.1.3',
+            'eduPersonAffiliation' => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.1'
         ],
         /*
         'attributes.required' => [
