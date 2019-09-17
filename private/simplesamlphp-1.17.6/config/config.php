@@ -1,15 +1,15 @@
 <?php
 /*
- * The configuration of SimpleSAMLphp
+ * The configuration of SimpleSAMLphp, including Pantheon SSO config outlined at https://pantheon.io/docs/shibboleth-sso
  *
  */
 
- # Insure that simpleSaml can keep a session when used in standalone mode:
+ # Pantheon: Insure that simpleSaml can keep a session when used in standalone mode:
 if (!ini_get('session.save_handler')) {
   ini_set('session.save_handler', 'file');
 }
 
-# Load necessary environmental data
+# Pantheon: Load necessary environmental data
 $ps = json_decode($_SERVER['PRESSFLOW_SETTINGS'], TRUE);
 $host = $_SERVER['HTTP_HOST'];
 $db = $ps['databases']['default']['default'];
@@ -1088,7 +1088,7 @@ $config = [
      *
      * The default datastore is 'phpsession'.
      */
-    'store.type'                    => 'sql',
+    'store.type' => 'sql',
 
     /*
      * The DSN the sql datastore should connect to.
@@ -1096,7 +1096,7 @@ $config = [
      * See http://www.php.net/manual/en/pdo.drivers.php for the various
      * syntaxes.
      */
-    'store.sql.dsn'                 => 'mysql:host='. $db['host'] .';port='. $db['port'] .';dbname='. $db['database'],
+    'store.sql.dsn' => 'mysql:host='. $db['host'] .';port='. $db['port'] .';dbname='. $db['database'],
 
     /*
      * The username and password to use when connecting to the database.
