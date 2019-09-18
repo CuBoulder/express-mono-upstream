@@ -13,7 +13,7 @@ $config = [
 
     // An authentication source which can authenticate against both SAML 2.0
     // and Shibboleth 1.3 IdPs.
-    'default-sp' => [
+    'cu_boulder' => [
         'saml:SP',
         'privatekey' => 'saml.pem',
         'certificate' => 'saml.crt',
