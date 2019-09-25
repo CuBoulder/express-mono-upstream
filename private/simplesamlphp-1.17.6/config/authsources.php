@@ -47,8 +47,11 @@ $config = [
         ],
 
         'attributes' => [
+            'cuEduPersonUUID' => 'urn:oid:1.3.6.1.4.1.632.11.1.30',
             'displayName' => 'urn:oid:0.9.2342.19200300.100.1.1',
-            'cuEduPersonUUID' => 'urn:oid:0.9.2342.19200300.100.1.1',
+            'givenName' => 'urn:oid:2.5.4.42',
+            'sn' => 'urn:oid:2.5.4.4',
+            'uid' => 'urn:oid:0.9.2342.19200300.100.1.1',
             'mail' => 'urn:oid:0.9.2342.19200300.100.1.3',
             'eduPersonAffiliation' => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.1'
         ],
