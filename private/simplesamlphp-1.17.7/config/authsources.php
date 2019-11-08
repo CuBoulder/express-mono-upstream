@@ -15,8 +15,8 @@ $config = [
     // and Shibboleth 1.3 IdPs.
     'cu_boulder' => [
         'saml:SP',
-        'privatekey' => '../../sites/default/files/private/saml.pem',
-        'certificate' => '../../sites/default/files/private/saml.crt',
+        'privatekey' => '../../sites/default/files/private/cert/saml.pem',
+        'certificate' => '../../sites/default/files/private/cert/saml.crt',
         
         // Whether to sign authentication requests sent from this SP
         'sign.authnrequest' => true,
