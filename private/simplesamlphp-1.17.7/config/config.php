@@ -4,15 +4,18 @@
  *
  */
 
- # Pantheon: Insure that simpleSaml can keep a session when used in standalone mode:
+# Pantheon: Insure that simpleSaml can keep a session when used in standalone mode:
 if (!ini_get('session.save_handler')) {
-  ini_set('session.save_handler', 'file');
+    ini_set('session.save_handler', 'file');
 }
 
 # Pantheon: Load necessary environmental data
 $ps = json_decode($_SERVER['PRESSFLOW_SETTINGS'], TRUE);
 $host = $_SERVER['HTTP_HOST'];
 $db = $ps['databases']['default']['default'];
+$_SERVER['SERVER_PORT'] = 443;
+$_SERVER['HTTPS'] = 'true';
+$port = ':' . $_SERVER['SERVER_PORT'];
 
 $config = [
 
@@ -37,14 +40,14 @@ $config = [
      * external url, no matter where you come from (direct access or via the
      * reverse proxy).
      */
-    'baseurlpath' => 'https://'. $host .':443/simplesaml/', // SAML should always connect via 443,
+    'baseurlpath' => 'https://' . $_SERVER['HTTP_HOST'] . $port . '/simplesaml/', // SAML should always connect via 443, configured to work with Pantheon
 
     /*
      * The 'application' configuration array groups a set configuration options
      * relative to an application protected by SimpleSAMLphp.
      */
     //'application' => [
-        /*
+    /*
          * The 'baseURL' configuration option allows you to specify a protocol,
          * host and optionally a port that serves as the canonical base for all
          * your application's URLs. This is useful when the environment
@@ -58,7 +61,7 @@ $config = [
          * need to compute the right URLs yourself and pass them dynamically
          * to SimpleSAMLphp's API.
          */
-        //'baseURL' => 'https://example.com',
+    //'baseURL' => 'https://example.com',
     //],
 
     /*
@@ -336,7 +339,7 @@ $config = [
      * This is an array of outputs. Each output has at least a 'class' option, which
      * selects the output.
      */
-    'statistics.out' => [// Log statistics to the normal log.
+    'statistics.out' => [ // Log statistics to the normal log.
         /*
         [
             'class' => 'core:Log',
@@ -349,8 +352,7 @@ $config = [
             'class' => 'core:File',
             'directory' => '/var/log/stats',
         ],
-        */
-    ],
+        */],
 
 
 
@@ -432,8 +434,7 @@ $config = [
             'password' => 'secret',
             'persistent' => false,
         ],
-        */
-    ],
+        */],
 
 
 
@@ -1096,7 +1097,7 @@ $config = [
      * See http://www.php.net/manual/en/pdo.drivers.php for the various
      * syntaxes.
      */
-    'store.sql.dsn' => 'mysql:host='. $db['host'] .';port='. $db['port'] .';dbname='. $db['database'],
+    'store.sql.dsn' => 'mysql:host=' . $db['host'] . ';port=' . $db['port'] . ';dbname=' . $db['database'],
 
     /*
      * The username and password to use when connecting to the database.
