@@ -46,7 +46,7 @@ $config = [
      * external url, no matter where you come from (direct access or via the
      * reverse proxy).
      */
-    'baseurlpath' => 'https://' . $_SERVER['HTTP_HOST'] . $port . '/simplesaml/', // SAML should always connect via 443, configured to work with Pantheon
+    'baseurlpath' => 'https://' . $_SERVER['HTTP_HOST'] . '/simplesaml/', // SAML should always connect via 443, removed $port to work with Pantheon
 
     /*
      * The 'application' configuration array groups a set configuration options
