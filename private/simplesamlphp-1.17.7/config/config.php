@@ -20,7 +20,7 @@ $port = ':' . $_SERVER['SERVER_PORT'];
 # Pantheon: Load secrets for production
 $json_text = file_get_contents('../../../sites/default/files/private/secrets.json');
 $simplesaml_data = json_decode($json_text, TRUE);
-$secretsalt = $simplesaml_data['simplesamlphp_secret_salt'];
+$secret_salt = $simplesaml_data['simplesamlphp_secret_salt'];
 $admin_password = $simplesaml_data['simplesamlphp_admin_password'];
 
 $config = [
@@ -124,7 +124,7 @@ $config = [
      * A possible way to generate a random salt is by running the following command from a unix shell:
      * LC_CTYPE=C tr -c -d '0123456789abcdefghijklmnopqrstuvwxyz' </dev/urandom | dd bs=32 count=1 2>/dev/null;echo
      */
-    'secretsalt' => $secretsalt,
+    'secretsalt' => $secret_salt,
 
     /*
      * This password must be kept secret, and modified from the default value 123.
