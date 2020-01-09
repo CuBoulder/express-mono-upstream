@@ -4,10 +4,8 @@
  * Attach this editor to a target element.
  */
 Drupal.wysiwyg.editor.attach.jwysiwyg = function(context, params, settings) {
-  var $field = this.$field;
   // Attach editor.
-  $field.wysiwyg(settings);
-  this.startWatching($($field.data('wysiwyg').editorDoc).find('body'));
+  $('#' + params.field).wysiwyg(settings);
 };
 
 /**

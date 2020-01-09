@@ -23,13 +23,10 @@ class LinkEntityTokenTest extends LinkBaseTestClass {
   }
 
   /**
-   * {@inheritdoc}
+   * Setup.
    */
-  public function setUp(array $modules = array()) {
-    $modules[] = 'token';
-    $modules[] = 'entity';
-    $modules[] = 'entity_token';
-    parent::setUp($modules);
+  public function setUp($modules = array()) {
+    parent::setUp(array('token', 'entity', 'entity_token'));
   }
 
   /**

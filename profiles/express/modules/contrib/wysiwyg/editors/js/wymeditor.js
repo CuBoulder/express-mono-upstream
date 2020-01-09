@@ -13,21 +13,7 @@ Drupal.wysiwyg.editor.attach.wymeditor = function (context, params, settings) {
     });
   };
   // Attach editor.
-  var $field = this.$field;
-  $field.wymeditor(settings);
-  var wymInstance = WYMeditor.INSTANCES[$field.data('wym_index')];
-  var wysiwygInstance = this;
-  $(wymInstance._box.find('.wym_iframe iframe').get(0)).bind('load', function () {
-    var $body = $('body', this.contentDocument);
-    var originaltContent = $body.html();
-    $body.bind('keyup paste mouseup', function () {
-      var currentContent = $body.html();
-      if (currentContent != originaltContent) {
-        originaltContent = currentContent;
-        wysiwygInstance.contentsChanged();
-      }
-    });
-  });
+  $('#' + params.field).wymeditor(settings);
 };
 
 /**

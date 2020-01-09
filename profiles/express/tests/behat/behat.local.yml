@@ -40,9 +40,6 @@ default:
     forms:
       paths: [ "%paths.base%/features/cu_forms_bundle" ]
       contexts: [ FeatureContext ]
-    digital_campaign:
-      paths: [ "%paths.base%/features/cu_digital_campaign_bundle" ]
-      contexts: [ FeatureContext ]
   extensions:
       Behat\MinkExtension:
         base_url: "http://127.0.0.1:8079/"
@@ -55,10 +52,6 @@ default:
                   verify: false
           sauce:
             sauce_labs:
-              # Following are placeholders for environmental variables
-              # username: USER_NAME
-              # access_key: ACCESS_KEY
-              connect: true
               # Browser defaults to Firefox if left out.
               browser: "chrome"
               #browser: "internet explorer"
@@ -74,3 +67,5 @@ default:
                 #platform: "Windows 10"
                 # Version of browser to use.
                 #version: "63.0"
+
+
