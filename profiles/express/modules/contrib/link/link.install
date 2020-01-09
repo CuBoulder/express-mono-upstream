@@ -12,7 +12,7 @@
  */
 
 /**
- * Implements hook_install().
+ * Implements hook_uninstall().
  */
 function link_install() {
   // Notify the user they may want to install token.

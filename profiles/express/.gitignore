@@ -14,4 +14,3 @@
 # Behat dependencies.
 tests/behat/bin/
 tests/behat/vendor/
-tests/behat/my.behat.local.yml

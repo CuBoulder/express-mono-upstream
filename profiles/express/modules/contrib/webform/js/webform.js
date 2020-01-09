@@ -84,25 +84,8 @@
 
       // Prevent the calendar button from submitting the form.
       $calendar.click(function (event) {
-        // This event is triggered also when pressing enter when the focus is on
-        // previous webform components, but we only want to do something when
-        // we are on the calendar component. By checking the event client x/y
-        // position we known if it was the user clicking. For keyboard navigators
-        // simply the focus handles the date picker so we don't have to do
-        // anything special for them.
-        if (event.clientX !== 0 && event.clientY !== 0) {
-          // Focus is only necessary for Safari. But it has no impact on other
-          // browsers.
-          $(this).focus();
-          event.preventDefault();
-        }
-      });
-
-      // Clear date on backspace or delete.
-      $calendar.keyup(function (e) {
-        if (e.keyCode == 8 || e.keyCode == 46) {
-          $.datepicker._clearDate(this);
-        }
+        $(this).focus();
+        event.preventDefault();
       });
     });
   };
@@ -129,9 +112,6 @@
    */
   Drupal.webform.conditionalCheck = function (e) {
     var $triggerElement = $(e.target).closest('.webform-component');
-    if (!$triggerElement.length) {
-      return;
-    }
     var $form = $triggerElement.closest('form');
     var triggerElementKey = $triggerElement.attr('class').match(/webform-component--[^ ]+/)[0];
     var settings = e.data.settings;
@@ -258,7 +238,7 @@
           case 'require':
             var $requiredSpan = $target.find('.form-required, .form-optional').first();
             if (actionResult != $requiredSpan.hasClass('form-required')) {
-              var $targetInputElements = $target.find("input:text,textarea,input[type='email'],select,input:radio,input:checkbox,input:file");
+              var $targetInputElements = $target.find("input:text,textarea,input[type='email'],select,input:radio,input:file");
               // Rather than hide the required tag, remove it so that other
               // jQuery can respond via Drupal behaviors.
               Drupal.detachBehaviors($requiredSpan);

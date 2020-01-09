@@ -28,10 +28,6 @@ function field_collection_token_info() {
     'name' => t('Host entity ID'),
     'description' => t('The entity ID of the host. For nodes this is <code>nid</code>, for users <code>uid</code>.'),
   );
-  $host['delta'] = array(
-    'name' => t('Host entity item delta'),
-    'description' => t('The delta of the reference pointing to this field collection item.'),
-  );
 
   // Chained tokens.
   foreach (field_collection_host_entity_types() as $entity_type => $entity_info) {
@@ -100,7 +96,6 @@ function field_collection_tokens($type, $tokens, array $data = array(), array $o
         'type' => 'hostEntityType',
         'bundle' => 'hostEntityBundle',
         'id' => 'hostEntityId',
-        'delta' => 'delta',
       );
       $entity_types = field_collection_host_entity_types();
       foreach ($tokens as $name => $orig) {

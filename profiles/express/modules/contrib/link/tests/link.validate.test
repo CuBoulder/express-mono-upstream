@@ -22,9 +22,13 @@ class LinkValidateTestCase extends LinkBaseTestClass {
   }
 
   /**
-   * Takes a URL, sees if it can validate that the URL is valid.
+   * Takes a url, and sees if it can validate that the url is valid.
+   *
+   * @codingStandardsIgnoreStart
    */
-  protected function linkTestValidateUrl($url) {
+  protected function link_test_validate_url($url) {
+    // @codingStandardsIgnoreEnd
+
     $field_name = $this->createLinkField();
 
     $label = $this->randomName();
@@ -67,15 +71,21 @@ class LinkValidateTest extends LinkValidateTestCase {
 
   /**
    * Validate basic URL.
+   *
+   * @codingStandardsIgnoreStart
    */
-  public function testLinkValidateBasicUrl() {
-    $this->linkTestValidateUrl('http://www.example.com');
+  public function test_link_validate_basic_url() {
+    // @codingStandardsIgnoreEnd
+    $this->link_test_validate_url('http://www.example.com');
   }
 
   /**
    * Test if we're stopped from posting a bad url on default validation.
+   *
+   * @codingStandardsIgnoreStart
    */
-  public function testLinkValidateBadUrlValidateDefault() {
+  public function test_link_validate_bad_url_validate_default() {
+    // @codingStandardsIgnoreEnd
     $this->web_user = $this->drupalCreateUser(array(
       'administer content types',
       'administer fields',
@@ -124,8 +134,11 @@ class LinkValidateTest extends LinkValidateTestCase {
 
   /**
    * Test if we're stopped from posting a bad url with validation on.
+   *
+   * @codingStandardsIgnoreStart
    */
-  public function testLinkValidateBadUrlValidateOn() {
+  public function test_link_validate_bad_url_validate_on() {
+    // @codingStandardsIgnoreEnd
     $this->web_user = $this->drupalCreateUser(array(
       'administer content types',
       'administer fields',
@@ -175,8 +188,11 @@ class LinkValidateTest extends LinkValidateTestCase {
 
   /**
    * Test if we can post a bad url if the validation is expressly turned off.
+   *
+   * @codingStandardsIgnoreStart
    */
-  public function testLinkValidateBadUrlValidateOff() {
+  public function test_link_validate_bad_url_validate_off() {
+    // @codingStandardsIgnoreEnd
     $this->web_user = $this->drupalCreateUser(array(
       'administer content types',
       'administer fields',
@@ -233,8 +249,11 @@ class LinkValidateTest extends LinkValidateTestCase {
    *
    * Test if a bad url can sneak through un-filtered if we play with the
    * validation...
+   *
+   * @codingStandardsIgnoreStart
    */
-  public function xTestLinkValidateSwitchingBetweenValidationStatus() {
+  public function x_test_link_validate_switching_between_validation_status() {
+    // @codingStandardsIgnoreEnd
     $this->acquireContentTypes(1);
     $this->web_user = $this->drupalCreateUser(array(
       'administer content types',
@@ -275,7 +294,6 @@ class LinkValidateTest extends LinkValidateTestCase {
     // $this->pass($this->content);.
     // @codingStandardsIgnoreLine
     $this->assertNoText(t('The value %value provided for %field is not a valid URL.', array(
-      // @codingStandardsIgnoreLine
       '%field' => $name,
       '%value' => trim($url),
     )));
@@ -305,43 +323,58 @@ class LinkValidateTest extends LinkValidateTestCase {
 
   /**
    * Validate that '<front>' is a valid url.
+   *
+   * @codingStandardsIgnoreStart
    */
-  public function testLinkFrontUrl() {
-    $this->linkTestValidateUrl('<front>');
+  public function test_link_front_url() {
+    // @codingStandardsIgnoreEnd
+    $this->link_test_validate_url('<front>');
   }
 
   /**
    * Validate that an internal url would be accepted.
+   *
+   * @codingStandardsIgnoreStart
    */
-  public function testLinkInternalUrl() {
+  public function test_link_internal_url() {
+    // @codingStandardsIgnoreEnd
     // Create the content first.
     $node = $this->drupalCreateNode();
 
     $link = 'node/' . $node->nid;
-    $this->linkTestValidateUrl($link);
+    $this->link_test_validate_url($link);
     $type = link_url_type($link);
     $this->assertEqual(LINK_INTERNAL, $type, 'Test ' . $link . ' is an internal link.');
   }
 
   /**
    * Validate a simple mailto.
+   *
+   * @codingStandardsIgnoreStart
    */
-  public function testLinkMailto() {
-    $this->linkTestValidateUrl('mailto:jcfiala@gmail.com');
+  public function test_link_mailto() {
+    // @codingStandardsIgnoreEnd
+    $this->link_test_validate_url('mailto:jcfiala@gmail.com');
   }
 
   /**
    * Check link external https.
+   *
+   * @codingStandardsIgnoreStart
    */
-  public function testLinkExternalHttps() {
-    $this->linkTestValidateUrl('https://www.example.com/');
+  public function test_link_external_https() {
+    // @codingStandardsIgnoreEnd
+    $this->link_test_validate_url('https://www.example.com/');
   }
 
   /**
    * Check link FTP.
+   *
+   * @codingStandardsIgnoreStart
    */
-  public function testLinkFtp() {
-    $this->linkTestValidateUrl('ftp://www.example.com/');
+  public function test_link_ftp() {
+    // @codingStandardsIgnoreEnd
+    $this->link_test_validate_url('ftp://www.example.com/');
   }
 
 }
@@ -364,16 +397,22 @@ class LinkValidateTestNews extends LinkValidateTestCase {
 
   /**
    * Validate a news link to a message group.
+   *
+   * @codingStandardsIgnoreStart
    */
-  public function testLinkNews() {
-    $this->linkTestValidateUrl('news:comp.infosystems.www.misc');
+  public function test_link_news() {
+    // @codingStandardsIgnoreEnd
+    $this->link_test_validate_url('news:comp.infosystems.www.misc');
   }
 
   /**
    * Validate a news link to a message id.  Said ID copied off of google groups.
+   *
+   * @codingStandardsIgnoreStart
    */
-  public function testLinkNewsMessage() {
-    $this->linkTestValidateUrl('news:hj0db8$vrm$1@news.eternal-september.org');
+  public function test_link_news_message() {
+    // @codingStandardsIgnoreEnd
+    $this->link_test_validate_url('news:hj0db8$vrm$1@news.eternal-september.org');
   }
 
 }
@@ -396,47 +435,65 @@ class LinkValidateSpecificURL extends LinkValidateTestCase {
 
   /**
    * Lets throw in a lot of umlouts for testing!
+   *
+   * @codingStandardsIgnoreStart
    */
-  public function testUmloutUrl() {
-    $this->linkTestValidateUrl('http://üÜü.exämple.com/nöde');
+  public function test_umlout_url() {
+    // @codingStandardsIgnoreEnd
+    $this->link_test_validate_url('http://üÜü.exämple.com/nöde');
   }
 
   /**
    * Check umlout mailto.
+   *
+   * @codingStandardsIgnoreStart
    */
-  public function testUmloutMailto() {
-    $this->linkTestValidateUrl('mailto:Üser@exÅmple.com');
+  public function test_umlout_mailto() {
+    // @codingStandardsIgnoreEnd
+    $this->link_test_validate_url('mailto:Üser@exÅmple.com');
   }
 
   /**
-   * Check German b in URL, aka Eszett.
+   * Check german b in url.
+   *
+   * @codingStandardsIgnoreStart
    */
-  public function testGermanEszettUrl() {
-    $this->linkTestValidateUrl('http://www.test.com/ßstuff');
+  public function test_german_b_url() {
+    // @codingStandardsIgnoreEnd
+    $this->link_test_validate_url('http://www.test.com/ßstuff');
   }
 
   /**
-   * Check Spanish ñ in URL.
+   * Check Special in url.
+   *
+   * @codingStandardsIgnoreStart
    */
-  public function testSpecialEneUrl() {
-    $this->linkTestValidateUrl('http://www.testÑñ.com/');
+  public function test_special_n_url() {
+    // @codingStandardsIgnoreEnd
+    $this->link_test_validate_url('http://www.testÑñ.com/');
   }
 
   /**
-   * Curly brackets in query.
+   * Curly Brackets in query.
+   *
+   * @codingStandardsIgnoreStart
    */
-  public function testCurlyBracketsInQuery() {
-    $this->linkTestValidateUrl('http://www.healthyteennetwork.org/index.asp?Type=B_PR&SEC={2AE1D600-4FC6-4B4D-8822-F1D5F072ED7B}&DE={235FD1E7-208D-4363-9854-4E6775EB8A4C}');
+  public function test_curly_brackets_in_query() {
+    // @codingStandardsIgnoreEnd
+    $this->link_test_validate_url('http://www.healthyteennetwork.org/index.asp?Type=B_PR&SEC={2AE1D600-4FC6-4B4D-8822-F1D5F072ED7B}&DE={235FD1E7-208D-4363-9854-4E6775EB8A4C}');
   }
 
   /**
    * Here, we're testing that a very long url is stored properly in the db.
    *
    * Basically, trying to test http://drupal.org/node/376818
+   *
+   * @codingStandardsIgnoreStart
    */
-  public function testLinkUrlFieldIsBig() {
+  public function testLinkURLFieldIsBig() {
+    // @codingStandardsIgnoreEnd
     $long_url = 'http://th.wikipedia.org/wiki/%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B9%80%E0%B8%9A%E0%B8%8D%E0%B8%88%E0%B8%A1%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%B9%E0%B8%97%E0%B8%B4%E0%B8%A8_%E0%B8%99%E0%B8%84%E0%B8%A3%E0%B8%A8%E0%B8%A3%E0%B8%B5%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%A3%E0%B8%B2%E0%B8%8A';
-    $this->linkTestValidateUrl($long_url);
+    $this->link_test_validate_url($long_url);
   }
 
 }
@@ -463,11 +520,10 @@ class LinkValidateUrlLight extends DrupalWebTestCase {
   }
 
   /**
-   * {@inheritdoc}
+   * Setup.
    */
-  public function setUp(array $modules = array()) {
-    $modules[] = 'link';
-    parent::setUp($modules);
+  public function setUp() {
+    parent::setUp('link');
   }
 
   /**
@@ -486,9 +542,6 @@ class LinkValidateUrlLight extends DrupalWebTestCase {
 
       case LINK_EMAIL:
         return "Email";
-
-      case LINK_TEL:
-        return "Telephone";
 
       case LINK_NEWS:
         return "Newsgroup";
@@ -532,43 +585,6 @@ class LinkValidateUrlLight extends DrupalWebTestCase {
   }
 
   /**
-   * Confirm that valid tel: links work as expected.
-   */
-  public function testValidateTelLinks() {
-    $links = array(
-      'tel:01',
-      'tel:123456789012345',
-      'tel:+123456789012345',
-    );
-    foreach ($links as $link) {
-      $type = link_url_type($link);
-      $this->assertEqual(LINK_TEL, $type, 'Test ' . $link . ' is a tel link.');
-      $valid = link_validate_url($link);
-      $this->assertTrue($valid, 'Test ' . $link . ' is valid tel link.');
-    }
-  }
-
-  /**
-   * Confirm that invalid tel: links work as expected.
-   */
-  public function testValidateTelLinksBad() {
-    $links = array(
-      'tel:0',
-      'tel:1234567890123456',
-      'tel:+1',
-      'tel:+0123456789',
-      'tel:+1234567890123456',
-      ':12345678',
-    );
-    foreach ($links as $link) {
-      $type = link_url_type($link);
-      $this->assertFalse($type, 'Test ' . $link . ' is not a tel link.');
-      $valid = link_validate_url($link);
-      $this->assertFalse($valid, 'Test ' . $link . ' is not a valid tel link.');
-    }
-  }
-
-  /**
    * Validate Newsgroup Link.
    */
   public function testValidateNewsgroupLink() {
@@ -599,7 +615,6 @@ class LinkValidateUrlLight extends DrupalWebTestCase {
     $tempfile = drupal_tempnam('public://files', 'test');
     $links = array(
       'rss.xml',
-      'foo#bar',
       file_uri_target($tempfile),
       drupal_realpath($tempfile),
     );

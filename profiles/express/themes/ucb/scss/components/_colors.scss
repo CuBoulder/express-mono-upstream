@@ -16,14 +16,19 @@
     }
     // Background color with adjusted text and link colors.
     .background-#{$name},
-    *[class*="background-"] .cu-box.background-#{$name},
+    .ucb-colors .background-#{$name},
+    .exbd-block .ucb-colors .background-#{$name},
+    .nested-colors .background-#{$name},
+    .exbd-block.exbd-style-#{$name},
+    .exbd-block .exbd-block.exbd-style-#{$name},
+    .exbd-block .cu-box.background-#{$name},
     *[class*="background-"] .background-#{$name},
     *[class*="background-"] *[class*="background-"] .background-#{$name},
     *[class*="background-"] *[class*="background-"] *[class*="background-"] .background-#{$name},
     *[class*="background-"] *[class*="background-"] *[class*="background-"] *[class*="background-"] .background-#{$name},
     *[class*="background-"] *[class*="background-"] *[class*="background-"] *[class*="background-"] *[class*="background-"] .background-#{$name},
     *[class*="background-"] *[class*="background-"] *[class*="background-"] *[class*="background-"] *[class*="background-"] *[class*="background-"] .background-#{$name},
-    *[class*="background-"] *[class*="background-"] *[class*="background-"] *[class*="background-"] *[class*="background-"] *[class*="background-"] *[class*="background-"] .background-#{$name},
+    *[class*="background-"] *[class*="background-"] *[class*="background-"] *[class*="background-"] *[class*="background-"] *[class*="background-"] *[class*="background-"] .background-#{$name}
 
      {
       background-color: $color;
@@ -38,7 +43,6 @@
         }
         @else {
           color: set-link-color($color);
-          text-decoration: none;
         }
 
       }
@@ -56,7 +60,6 @@
 
 
       }
-      /*
       a.link-text-color {
         &:link,
         &:visited {
@@ -70,11 +73,12 @@
           color: set-text-color($color);
         }
       }
-      */
       &.color-border {
         border: 1px solid rgba(darken($color, 20), .4);
       }
-
+      &.background-transparent {
+        background-color: rgba($color, .7);
+      }
       a.button-ghost {
         color: set-text-color($color) !important;
         border:1px solid set-text-color($color);
@@ -91,10 +95,6 @@
           background: set-text-color($color);
         }
       }
-      /*
-      &.background-transparent {
-        background-color: rgba($color, .7);
-      }
       a.text-color {
         &:link,
         &:visited,
@@ -109,9 +109,8 @@
           text-decoration: underline;
         }
       }
-      */
     }
-    .exbd-block.background-#{$name} {
+    .exbd-block.exbd-style-#{$name} {
       padding:10px;
      @media screen and (min-width:960px) {
        padding:20px;
