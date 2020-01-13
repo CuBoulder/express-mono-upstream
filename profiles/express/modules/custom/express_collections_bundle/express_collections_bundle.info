@@ -63,6 +63,7 @@ features[field_instance][] = node-collection_item-field_collection_type
 features[node][] = collection_item
 features[taxonomy][] = collection_categories
 features[taxonomy][] = collection_type
+features[variable][] = addanother_button_collection_item
 features[variable][] = additional_settings__active_tab_collection_item
 features[variable][] = attachment_links_create_alias_collection_item
 features[variable][] = attachment_links_selection_collection_item
@@ -93,4 +94,4 @@ bundle_roles[] = configuration_manager
 
 features[variable][] = webform_node_collection_item
 project status url = https://github.com/CuBoulder/express_collections_bundle
-project_demo_url = http://www.colorado.edu/webcentral/node/1530
+project_demo_url = https://websupport.colorado.edu/category/148-collections
