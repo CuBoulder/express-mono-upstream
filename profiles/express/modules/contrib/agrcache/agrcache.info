@@ -1,4 +1,0 @@
-name = Aggregate cache
-description = imagecache style generation of css and javascript aggregates.
-
-core = 7.x

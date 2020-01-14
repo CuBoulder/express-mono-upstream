@@ -1,7 +1,0 @@
-name = Menu Icon
-description = Adds icons to menu items.
-core = 7.x
-package = CU-Advanced Design
-version = 7.x-1.0
-
-dependencies[] = cu_font_awesome
