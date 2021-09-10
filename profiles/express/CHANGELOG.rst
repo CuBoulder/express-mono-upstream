@@ -5,7 +5,327 @@ All notable changes to this project will be documented in this file.
 
 The format is based on `Keep a Changelog`__, and this project adheres to `Semantic Versioning`__.
 
-v4.2.1 (2012-04-21)
+v4.4.6 (2021-06-07)
+------------
+
+Changed
+~~~~~~~
+- Change express site metrics json endpoint to. [AlanBCole]
+
+- Update wywiwyg test. [cathysnider]
+
+- Fix broken funnel pages test. [cathysnider]
+
+- Remove instantiation and developer role from James Fuller. [cathysnider]
+
+
+Other
+~~~~~
+- Adding comment about the use of code from atlas_statistics.module. [AlanBCole]
+
+- Using atlas_stistics code that was left out of metrics gathering before. [AlanBCole]
+
+- Changing message in "Please Run Tests" workflow. [Alan Cole]
+
+- Removing sauce labs code. [Alan Cole]
+
+- Adding new workflow to comment run tests in a pr targeting dev. [AlanBCole]
+
+- Including action trigger for adding a label. [AlanBCole]
+
+- Adding token so pr comment can be made. [AlanBCole]
+
+- Trying to check if the pr has been labeled with 'ReadyForTesting' before running the tests, since they take so long. [AlanBCole]
+
+- Tagging failing test as broken. To be looked at in a new issue. [AlanBCole]
+
+- Changing behat.local.yml to match new testing configuration. [AlanBCole]
+
+- Removing a few things that I left in by accident, again. [AlanBCole]
+
+- Removing a few things that I left in by accident. [AlanBCole]
+
+- Created workflow to run our Behat tests. [AlanBCole]
+
+  Tests will be run when a new pr targets dev
+
+
+v4.4.5 (2021-04-26)
+------------
+
+Added
+~~~~~
+- Getting started with basic use ofJson Web Tokens. [AlanBCole]
+
+
+Changed
+~~~~~~~
+- Adjust function to load only one node. [cathysnider]
+
+- Duplicate newsletter archive page function. [cathysnider]
+
+- Add url item for current issue of newsletter. [cathysnider]
+
+- Adding new design for horizontal tabs. Resolves #800. [kevincrafts]
+
+
+Other
+~~~~~
+- Simply adding to the variable table in the hook_install() method. No longer using the settings.php file for this, only the express_site_metrics_secret. [AlanBCole]
+
+- Resolving some requested changes: [AlanBCole]
+
+  - fix link paths to include the new url/path
+  - Use firebase/php-jwt code directly by simply copy/pasting the JWT class file.
+  - Removed hook_cron() implementations from atlas_statistics module, since we are no longer using that to gather metrics data
+  - Put JWT class in its own file
+  - Some other minor css styling issues
+- Resolving most PR comments and issues. Also commenting out hook_cron functions in atlas_statistics. [AlanBCole]
+
+- Added atlas_statistics, cu_atlas, and atlas as dependencies. [AlanBCole]
+
+  Added these because I am using the hook_atlas_statistics() method outlined in atlas_statistics module
+- First working version. [AlanBCole]
+
+  Not all metrics data present in atlas statistics is showing up but SOME data is showing up.
+- First working version of web token handler. [AlanBCole]
+
+- Started to set up simple unit tests. [AlanBCole]
+
+
+v4.4.3 (2021-02-03)
+-------------------
+
+Changed
+~~~~~~~
+- Update permissions so that anonymoususers can see JS includes. Resolves #787. [James Fuller]
+
+
+Other
+~~~~~
+- Using a more nuanced approach: - filter/tips endpoint should be visible to all users with the 'authenticated user' role - unauthenticated users will be shown the log in page (this is default behavior. I did not implement it) [AlanBCole]
+
+- Making sure function naming is as intended. [AlanBCole]
+
+- Fix: added  method to cu_core. Resolves #790. [AlanBCole]
+
+
+
+v4.4.2 (2021-01-13)
+------------
+
+Fixed
+~~~~~~~
+
+- Update secure perms for JS Includes. [cathysnider]
+
+- Adding border to search block so field is visible. Resolves #740. [kevincrafts]
+
+- Fixing issue where hero units set to image sizing would have extra space at the bottom. Resolves #734. [kevincrafts]
+
+- Hiding search thumbnails. Resolves #771. [kevincrafts]
+
+-  Changed selector used in people_content_type.scss for person photos from  to  in order to make it more specific to the intended situation.
+
+- Add error checking for Layout Title length. [cathysnider]
+
+
+v4.4.1 (2020-12-07)
+------------
+
+Added
+~~~~~
+- Added a page to list all of a person's publications.
+  - if there are any publications authored by the person there will be a list of 5 of them by default
+  - if the person has more than 5 publications there will be a link at the bottom of the publications list
+  - clicking on the link should take you to a page with a paged list of all the person's publications, most recent first by default.
+  - the person's name should be a link to take you back to their Person page
+  - Can be configured by visiting /admin/structure/block/manage/cu_faculty_publications_bundle/person_publications_list/configure
+  - Can be inserted via Context
+  - grabs email from node of the person page it is loaded on.
+
+
+Deprecated
+~~~~~~~
+- Removing UI for adding LiveChat widgets. Resolves #744.
+
+- Removing bundle roles from livechat bundle so it can't be enabled.
+
+
+Fixed
+~~~~~
+- Allow warning/error messages to float to left side of image without its div overlapping with image's div.
+
+- Fix PATH assignment for drush.
+
+
+v4.4.0 (2020-10-26)
+------------
+
+Added
+~~~~~
+- Added integration to experts.colorado.edu. Resolves #41.
+
+- New method for including specific types of JavaScript embeds. Resolves #691.
+
+- Added context_error to allow the placement of a search box on a 403 or 404 page. Resolves #123.
+
+
+Changed
+~~~~~~~
+- Adding video filter for Wowza livestreaming video service. Resolves #289.
+
+
+Fixed
+~~~~~~~
+- Fixing issue where there was an empty role available. Resolves #718.
+
+
+v4.3.5 (2020-10-14)
+------------
+
+Fixed
+~~~~~~~
+- Replacing incorrect function call. Resolves #736
+
+
+v4.3.4 (2020-10-12)
+------------
+
+Changed
+~~~~~~~
+- People content type utilizes nested taxonomy terms for filters
+
+
+Fixed
+~~~~~~~
+- Fix for counter.js used in the countup shortcode. Resolves #637.
+
+- Fixing links to include full urls, fixing gradient css for article title. Resolves #729.
+
+
+v4.3.3 (2020-09-29)
+------------
+
+Changed
+~~~~~~~
+- Remove hard-coded Google Analytics ID from Express code base, we will add it during deployment.
+
+- Adding field for multiselect option #599.
+
+
+Fixed
+~~~~~~~
+- Degrading gracefully if the collection type term used in the collection block has been deleted. Resolves #685.
+
+
+v4.3.2 (2020-09-17)
+------------
+
+Fixed
+~~~~~~~
+- Revert Google Tag Manager contrib update. Resolves #707.
+
+
+v4.3.1 (2020-09-10)
+------------
+
+Changed
+~~~~~~~
+- Replace poor language choices 'master/slave'; 'whitelist/blacklist'.
+
+- Checking to see if alerts xml is valid. Resolves #677.
+
+- Adding back in settings option for sidebars. resolves #517.
+
+- Updated contributed modules
+
+- We now test using our modified Drupal core
+
+
+Deprecated
+~~~~~~~
+- All themes are responsive. Fixed width sites have been deprecated. Removed toggle for responsive settings.
+
+
+Fixed
+~~~~~~~
+- Fixing notice if a block did not have a bid value. Resolves #696.
+
+- Article slider links are now the correct color. Removed extra/empty links. Resolves #548.
+
+
+v4.3.0 (2020-04-21)
+------------
+
+Added
+~~~~~~~
+- Adding a setting to hide the subnavigation on mobile devices. Resolves #344.
+
+- Add masquerade module.
+
+
+Changed
+~~~~~~~
+- Removing hard coded array of feature names to ignore when overridden. If a feature is expected to be overridden 'settings[can_be_overridden] = 1' should be added to its .info file.
+
+- cu_googleanalytics 'can_be_overridden'.
+
+- cu_home_page 'can_be_overridden'.
+
+- cu_linkchecker 'can_be_overridden'.
+
+- Fixing issue where the excluded blocks in block wrapper weren't set correctly in the last update. Resolves #564.
+
+- Adjusted user_external_invite_user_role_delete() to search for correct variable and remove content_editor rid.
+
+- Allow multiple bylines in articles. resolves #554.
+
+- Update Drupal core version.
+
+
+Fixed
+~~~~~
+- Previous and next icons in datepicker no display correctly.
+
+- Horizontal scroll bar no longer displays with the responsive table shortcode on browsers running on Windows. Resolves #530.
+
+- Fix: Article redirects were ignoring query parameters attached to a url. resolves #496.
+
+
+Removed
+~~~~~~~
+- Removing deprecated content editor role.
+
+- Removed unused function with its broken link. Resolves #581.
+
+
+v4.2.2 (2020-05-14)
+------------
+
+Added
+~~~~~
+- Adding large search box block.
+
+
+Changed
+~~~~~~~
+- Improving active states for secondary navigation.
+
+- Improve module uninstall process to remove associated roles as well.
+
+
+Fixed
+~~~~~~~
+- Fixing issue where some block titles weren't styled correctly.
+
+
+Removed
+~~~~~~~
+- Removing deprecated content editor role.
+
+
+v4.2.1 (2020-04-21)
 ------------
 
 This release reverts a PR with a bug in it and resolves an increase in logging.
@@ -17,7 +337,7 @@ Fixed
 - External Article Links not working properly
 
 
-v4.2.0 (2012-04-15)
+v4.2.0 (2020-04-15)
 ------------
 
 This release adds site affiliation and improves our visibility into the service.
@@ -58,7 +378,7 @@ Deprecated
 - Disable and uninstall old tracking pixel modules. Resolves #462.
 
 
-v4.1.4 (2012-02-12)
+v4.1.4 (2020-02-12)
 ------------
 
 This release add content types to the default sitemap and removes configuration that had no impact.
@@ -70,7 +390,7 @@ Changed
 - Removing configuration for Block Icon Color. #434
 
 
-v4.1.3 (2012-01-14)
+v4.1.3 (2020-01-14)
 ------------
 
 This release resolves some display bugs.
