@@ -341,22 +341,13 @@ function cu_core_requirements($phase) {
   if ($phase === 'runtime') {
     $t = get_t();
     $overriddenFeatures = array();
-    // This is a way to hard code (almost never the best?) features we know will be overridden.
-    // Just put the sting name of the feature in.
-    $featureStatesToIgnore = [
-      'cu_sitewide',
-      'cu_sitemap',
-      'cu_feature_callout',
-      'cu_social_links',
-      'cu_webform',
-      'cu_mega_menu',
-      'cu_ldap',
-    ];
     // The features.export.inc is where features_get_storage() is defined.
     module_load_include('inc', 'features', 'features.export');
 
+    // This loops over each feature, checking if its state is overridden and if it is expected to be overridden.
+    // If the feature's .info file contains `settings[can_be_overridden] = 1`, it can be overridden and will not show up as an error on the /admin/reports/status page.
     foreach (features_get_features(NULL, TRUE) as $feature) {
-      if (features_get_storage($feature->name) == FEATURES_OVERRIDDEN && !in_array($feature->name, $featureStatesToIgnore)) {
+      if (features_get_storage($feature->name) == FEATURES_OVERRIDDEN && $feature->info['settings']['can_be_overridden'] !== "1") {
         $overriddenFeatures[] = $feature->info['name'];
       }
     }
@@ -385,7 +376,7 @@ function cu_core_requirements($phase) {
 
   // Check value LDAP Mixed Mode variable; warn if site is in Mixed Mode.
   $ldapAuthArray = variable_get('ldap_authentication_conf', FALSE);
-  $authMode = $ldapAuthArray[authenticationMode];
+  $authMode = $ldapAuthArray['authenticationMode'];
   if ($authMode == 1) {
     $requirements['authMode'] = array(
       'title' => $t('Authentication Mode'),
@@ -536,4 +527,36 @@ function cu_core_update_7068() {
   );
   module_disable($modules);
   drupal_uninstall_modules($modules);
+}
+
+/**
+ * Ensure responsive setting is set as expected now that the option for users to alter this setting has been removed.
+ */
+function cu_core_update_7069() {
+  $themes = list_themes();
+  $hidden_themes = variable_get('express_theme_picker_theme_ignore', array());
+
+  foreach ($themes as $theme) {
+    if (empty($hidden_themes[$theme->name])) {
+      $theme_settings = variable_get('theme_' . $theme->name . '_settings', array());
+      // Alpha responsive is set as a string in the theme's .info file. Set it as a string here, too.
+      $theme_settings['alpha-responsive'] = '1';
+      variable_set('theme_' . $theme->name . '_settings', $theme_settings);
+    }
+  }
+}
+
+/**
+ * Reverting cu_wysiwyg to add wowza video filter.
+ */
+function cu_core_update_7070() {
+  $features = array('cu_wysiwyg');
+  cu_core_revert_features($features);
+}
+
+/**
+ * Enable express_site_metrics module for Prometheus' gathering of metrics data.
+ */
+function cu_core_update_7071() {
+  module_enable(['express_site_metrics'], TRUE);
 }
